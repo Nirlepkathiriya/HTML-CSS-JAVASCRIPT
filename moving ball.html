@@ -1,0 +1,94 @@
+<html>
+<head>
+	<style>
+		.c1{
+			height:100px;width:100px;border:1px solid black;
+			border-radius:60%; 
+		}
+		.c2{
+			height:500px;width:500px;border:1px solid black;
+		}
+	</style>
+	<script>
+		var i=0;
+		var j=0;
+		function fn()
+		{
+			var t=document.getElementById("out");
+			t.style.backgroundColor="black";
+			var a=document.getElementById("inn");
+			a.style.marginLeft= i+"px";
+			a.style.marginTop= i+"px";
+			a.style.backgroundColor="red";
+			if(i<400)
+			{
+			 	i=i+5;
+			 	setTimeout("fn()",10);
+		    }
+		    else
+			{
+				up();
+			}
+		}
+		function up()
+		{
+			var a=document.getElementById("inn");
+			a.style.marginTop= i+"px";
+			a.style.backgroundColor="green";
+			i=i-5;
+			if(i>=0)
+			{
+				setTimeout("up()",10);
+			}
+			else
+			{
+				j=400;
+				i=0;
+				crside();
+			}
+		}
+		
+		function crside()
+		{
+			var a=document.getElementById("inn");
+			a.style.marginLeft= j+"px";
+			a.style.marginTop= i+"px";
+			a.style.backgroundColor="blue";
+			if(j>0 && i<400)
+			{
+				j=j-5;
+				i=i+5;
+				setTimeout("crside()",10);
+			}
+			else
+			{
+				i=0;
+				j=400;
+				up1();
+			}
+		}
+		function up1()
+		{
+			var a=document.getElementById("inn");
+			a.style.marginTop= j+"px";
+			a.style.backgroundColor="green";
+			if(j>0)
+			{
+				j=j-5;
+				setTimeout("up1()",10);
+			}
+			else
+			{
+				fn();
+			}
+		}
+
+	</script>
+</head>
+
+<body onload="fn()">
+	<div id="out" class="c2">
+		<div id="inn" class="c1"></div>
+	</div>
+</body>
+</html>
