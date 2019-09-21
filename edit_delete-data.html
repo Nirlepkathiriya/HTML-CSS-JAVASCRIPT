@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		var l,r;
+		function fn()
+		{
+			var a=document.getElementById("t");
+			var fi=document.getElementById("fn");
+			var la=document.getElementById("ln");
+			
+			a.style.display="";
+			var r=a.insertRow();
+			r.insertCell().innerHTML=fi.value;
+			r.insertCell().innerHTML=la.value;
+			r.insertCell().innerHTML="<input type='submit' value='edit' onclick='ed(this)'/><input type='submit' value='delete' onclick='del(this)'/>";
+		}
+
+		function del(x)
+		{
+			 l=x.parentNode.parentNode;
+			var t1=document.getElementById("t");
+			t1.deleteRow(l.rowIndex);
+		}
+
+		function ed(y)
+		{
+			r=y.parentNode.parentNode;
+			var fn1=document.getElementById("fn");
+			var ln1=document.getElementById("ln");
+			var v=document.getElementById("u");
+			var s=document.getElementById("s");
+			v.style.display="";
+			s.style.display="none";
+		    var p=r.cells[0];
+			var q=r.cells[1];
+			fn1.value=p.innerHTML;
+			ln1.value=q.innerHTML;
+		}
+
+		function up()
+		{
+			//var r=y.parentNode.parentNode;
+			var v=document.getElementById("u");
+			var s=document.getElementById("s");
+
+			var fn1=document.getElementById("fn");
+			var ln1=document.getElementById("ln");
+			 var p=r.cells[0];
+			var q=r.cells[1];
+			p.innerHTML=fn1.value;
+			q.innerHTML=ln1.value;
+			
+			v.style.display="none";
+			s.style.display="";
+		}
+
+	</script>
+
+</head>
+<body>
+	firstname<input type="text" name="fn" id="fn"/><br><br>
+	lastname<input type="text" name="ln" id="ln"/><br><br>
+	
+	<input type="submit" onclick="fn()" id="s"/>
+	<input type="submit" value="update" onclick="up()" id="u" style="display:none"/>
+	
+	<table id="t" border="1px" style="display:none;text-align:center">
+		<tr>
+			<td>firstname</td>
+			<td>lastname</td>
+			<td>action</td>
+		</tr>
+	</table>
+</body>
+</html>
